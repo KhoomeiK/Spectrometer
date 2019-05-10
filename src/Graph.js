@@ -20,7 +20,7 @@ export default class Graph extends Component {
 	render() {
 		return (
 			<div>
-				<LineChart width={400} height={400} data={this.state.json}>
+				<LineChart width={window.innerWidth} height={window.innerHeight} data={this.state.json}>
 					<Line type="monotone" dataKey="uv" stroke="#8884d8" />
 				</LineChart>
 			</div>
