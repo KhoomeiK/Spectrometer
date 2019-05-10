@@ -2,7 +2,7 @@ import numpy as np
 
 
 #serial definitions
-port = '/dev/tty.usbmodem143203'
+port = '/dev/tty.usbmodem143120' # SET THIS
 baudrate = 115200
 
 #Data as the program handles
