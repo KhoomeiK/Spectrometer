@@ -9,9 +9,9 @@ from flask_cors import CORS
 app = Flask(__name__, static_folder='./build')
 CORS(app)
 
-@app.route('/')
-def index():
-    return send_from_directory(app.static_folder, 'index.html')
+# @app.route('/')
+# def index():
+#     return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/api')
 def api():
