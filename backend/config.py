@@ -1,8 +1,8 @@
 import numpy as np
-
+import os
 
 #serial definitions
-port = '/dev/tty.usbmodem143120' # SET THIS
+port = os.environ['port'] # env var; export port="/dev/tty.usbmodem143120"
 baudrate = 115200
 
 #Data as the program handles
