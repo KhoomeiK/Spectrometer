@@ -17,7 +17,7 @@ export default class Graph extends Component {
 	// 	console.log(this.state.json)
 	// }
 
-	calibrate = () => {
+	calibrate = async() => {
 		let received = await axios('http://localhost:5000/api');
 		let data = []
 		received.data.data.forEach(point => { data.push({ uv: point }) })
@@ -25,7 +25,7 @@ export default class Graph extends Component {
 		this.setState({ 'calibration': data });
 	}
 
-	measure = () => {
+	measure = async() => {
 		let received = await axios.post('http://localhost:5000/calibrated', this.state.calibration);
 		let data = []
 		received.data.data.forEach(point => { data.push({ uv: point }) })

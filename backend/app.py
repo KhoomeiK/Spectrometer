@@ -3,7 +3,7 @@ import serial
 import config
 import time
 
-from flask import Flask, jsonify, send_from_directory
+from flask import Flask, jsonify, send_from_directory, request
 from flask_cors import CORS
 
 app = Flask(__name__, static_folder='./build')
@@ -89,9 +89,15 @@ def api():
         # messagebox.showerror(
         #     "By the great otter!", "There's a problem with the specified serial connection.")
 
-@app.route('/calibrated')
+@app.route('/calibrated', methods=['POST'])
 def calibrate():
-    pass
+    read = api()
+    calib = request.json
+    out = []
+    for i in range(0, len(read['data'])):
+        out[i] = read['data'][i] - calib['data'][i]
+    return out
+
 
 if __name__ == '__main__':
     app.run(use_reloader=True, port=5000, threaded=True)
