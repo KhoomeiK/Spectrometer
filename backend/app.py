@@ -89,5 +89,9 @@ def api():
         # messagebox.showerror(
         #     "By the great otter!", "There's a problem with the specified serial connection.")
 
+@app.route('/calibrated')
+def calibrate():
+    pass
+
 if __name__ == '__main__':
     app.run(use_reloader=True, port=5000, threaded=True)
