@@ -89,14 +89,23 @@ def api():
         # messagebox.showerror(
         #     "By the great otter!", "There's a problem with the specified serial connection.")
 
-@app.route('/calibrated', methods=['POST'])
-def calibrate():
+@app.route('/blank', methods=['POST'])
+def blank():
     read = api()
-    calib = request.json
+    bla = request.json
     out = []
     for i in range(0, len(read['data'])):
-        out[i] = read['data'][i] - calib['data'][i]
+        out[i] = read['data'][i] - bla['data'][i]
     return out
+
+@app.route('/calibrate')
+def calibrate():
+    read = api()
+    high = 0
+    for i in range(0, len(read['data'])):
+        if read['data'][i] > high:
+                high = i
+    return jsonify({'maxPixel': high})
 
 
 if __name__ == '__main__':
